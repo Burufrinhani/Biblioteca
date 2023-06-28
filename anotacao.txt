@@ -1,0 +1,47 @@
+entrada e saída de livros
+
+busca de livros
+
+opções de gêneros
+
+localização dos titulos
+
+registro de livros alugados
+clientes da biblioteca
+
+lista de titulos por ordem alfabética, numero de paginas em qualquer ordem e quantidade disponivel
+    informações sobre aluguel
+    valores dos livros
+    quantidade de livros
+    livros de mesmo título
+    quantidade total de livros
+
+
+-------------------> OBJETOS <-------------------
+livro
+    titulo
+    genero
+    numero de paginas
+    sinopse
+    valor
+
+
+estante
+    lista com livros da estante
+    quantidade de livros
+    genero
+    numeração
+
+
+cliente
+    nome
+    telefone
+    endereço
+    lista de livros alugados
+
+
+biblioteca
+    estantes
+    livros
+    dicionário com clientes
+    valor do caixa
