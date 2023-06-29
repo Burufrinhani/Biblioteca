@@ -9,11 +9,14 @@ Requisitos:
 
 O programa...
 
-I.	Deve ser um sistema console feito em Python;
 
-II.	Ao iniciar, deve apresentar as opções no menu para que o usuário possa selecionar;
+DIA 28/06:
+    I.	Deve ser um sistema console feito em Python; OK
 
-III. Não deve ser encerrado até que o usuário opte por encerrar o programa nas opções do Tópico II;
+    II.	Ao iniciar, deve apresentar as opções no menu para que o usuário possa selecionar; OK
+
+    III. Não deve ser encerrado até que o usuário opte por encerrar o programa nas opções do Tópico II; OK
+
 
 IV.	Deve permitir que o usuário pesquise por livros e acesse suas informações, como: título, quantidade de livros correspondentes, gênero, sinopse, quantidade de páginas, prateleira em que está localizado, etc.
 
