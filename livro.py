@@ -1,10 +1,11 @@
 class Livro:
-    def __init__ (self, titulo, genero, pgs, sinopse, valor):
-        self.titulo = titulo
-        self.genero = genero
-        self.pgs = pgs
-        self.sinopse = sinopse
-        self.valor = valor
+    def __init__ (self, informacoes):
+        self.titulo = informacoes[0]
+        self.genero = informacoes[1]
+        self.pgs = informacoes[2]
+        self.sinopse = informacoes[3]
+        self.valor = informacoes[4]
 
     def __str__(self):
-        return f'Título: {self.titulo}\nGênero: {self.genero}\nNúmero de páginas: {self.pgs}\nSinopse: {self.sinopse}\nValor: {self.sinopse}'
+        return f'Título: {self.titulo}\nGênero: {self.genero}\nNúmero de páginas: {self.pgs}\nSinopse: {self.sinopse}\nValor: {self.valor}'
+    
