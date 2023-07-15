@@ -8,3 +8,6 @@ class Estante:
     def __str__(self):
         return f'Livro: {self.livros}\nQuantidade de Livros: {self.qtdLivros}\nGênero da estante: {self.gen}\nLocalização da estante: {self.num}\n'
     
+    def adicionaLivros(self, livro):
+        self.livros.append(livro)
+

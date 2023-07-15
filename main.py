@@ -16,9 +16,9 @@ def definirSaudacao():
 
     return saud
 
-# estante1 = estante.Estante("Qualquer coisa", 5, "Suspense", 1)
-# 
-# print(estante1)
+estante1 = estante.Estante("Qualquer coisa", 5, "Suspense", 1)
+
+print(estante1)
 
 print(f'{definirSaudacao()} Insira a opção que deseja. \n')
 

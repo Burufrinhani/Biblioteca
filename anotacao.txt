@@ -45,3 +45,8 @@ biblioteca
     livros
     dicionário com clientes
     valor do caixa
+
+
+# tupla       - ()
+# lista       - []
+# dicionario  - {}
