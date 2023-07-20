@@ -1,8 +1,9 @@
 from os import system
 import datetime
-import estante, livro, cliente
+import estante, livro, cliente, biblioteca
 
 system('cls')
+bibli = biblioteca.Biblioteca()
 
 def definirSaudacao():
     hora = int((datetime.datetime.now()).strftime("%H"))
@@ -31,15 +32,23 @@ while True:
 
     if opcao == 1:
         print('Entrada e saída de livros. \n')
+        break
 
     elif opcao == 2:
         print('Busca de livros.')
+        break
 
     elif opcao == 3:
         print('Opções de gêneros.')
 
+        bibli.opcoesGenero()
+
+        break
+
     elif opcao == 4:
         print('Localização dos títulos')
+
+        break
 
     elif opcao == 5:
         break    
