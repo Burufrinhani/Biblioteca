@@ -1,6 +1,7 @@
 import livro, estante
+from os import system
 
-livros = [("O Amor Proibido", "Romance", 350, "Em um mundo dividido por ódio e preconceito, dois jovens de famílias rivais se apaixonam intensamente, desafiando todas as expectativas e enfrentando grandes obstáculos para ficarem juntos.", 34.90), 
+livros = [("Amor Proibido", "Romance", 350, "Em um mundo dividido por ódio e preconceito, dois jovens de famílias rivais se apaixonam intensamente, desafiando todas as expectativas e enfrentando grandes obstáculos para ficarem juntos.", 34.90), 
 ("A Promessa de um Novo Amanhã", "Romance", 400, "Após uma grande perda, uma mulher decide recomeçar sua vida em uma cidade pequena. Lá, ela conhece um homem misterioso que a ajuda a curar seu coração ferido e a encontrar a felicidade novamente.", 44.90),
 ("Entre Dois Mundos", "Romance", 280, "Uma história de amor que transcende fronteiras e culturas. Um casal improvável luta contra as diferenças e as adversidades para viver um amor verdadeiro, enfrentando o desafio de conciliar suas identidades e raízes.", 27.90),
 ("A Melodia do Coração", "Romance", 320, "Uma talentosa musicista encontra o amor em um enigmático compositor. Juntos, eles descobrem que a música pode curar feridas e conectar almas, enquanto enfrentam seus próprios medos e inseguranças.", 31.90),
@@ -10,11 +11,11 @@ livros = [("O Amor Proibido", "Romance", 350, "Em um mundo dividido por ódio e 
 ("A Cidade das Máquinas", "Ficção Científica", 350, "Em uma sociedade dominada por máquinas inteligentes, um grupo de rebeldes busca libertar a humanidade do controle opressivo. Nessa batalha entre homens e máquinas, segredos antigos são revelados, e a esperança de um futuro livre depende de uma escolha impossível.", 34.90),
 ("O Último Horizonte", "Ficção Científica", 300, "Em um mundo devastado por catástrofes naturais, a humanidade luta pela sobrevivência. Uma equipe de cientistas e aventureiros parte em uma missão desesperada para encontrar um novo lar em outro planeta. A jornada é repleta de perigos desconhecidos e dilemas éticos, enquanto eles enfrentam o fim da civilização como a conhecemos.", 29.90),
 ("A Realidade Virtual", "Ficção Científica", 280, "Em um futuro próximo, a tecnologia de realidade virtual atinge um nível avançado, permitindo que as pessoas vivam em mundos digitais perfeitos. Porém, à medida que a linha entre realidade e virtualidade se torna tênue, um grupo de hackers tenta desvendar uma conspiração que ameaça a liberdade de toda a humanidade.", 27.90),
-("A Conexão Quântica", "Ficção Científica", 320, "Um cientista brilhante descobre uma maneira de viajar entre realidades paralelas por meio da física quântica. Enquanto explora esses mundos alternativos, ele se depara com versões diferentes de si mesmo e enfrenta um dilema moral: até onde ele está disposto a ir para salvar sua própria realidade?", 31.90),
+("Conexão Quântica", "Ficção Científica", 320, "Um cientista brilhante descobre uma maneira de viajar entre realidades paralelas por meio da física quântica. Enquanto explora esses mundos alternativos, ele se depara com versões diferentes de si mesmo e enfrenta um dilema moral: até onde ele está disposto a ir para salvar sua própria realidade?", 31.90),
 
-("O Legado dos Reinos", "Fantasia", 400, "Em um mundo onde a magia foi esquecida, um jovem descobre que é o herdeiro de um antigo reino encantado. Ele deve embarcar em uma jornada perigosa para restaurar a magia e derrotar as forças das trevas que ameaçam dominar o mundo.", 44.90),
-("A Filha dos Elementos", "Fantasia", 350, "Uma garota com poderes misteriosos é a única esperança para restaurar o equilíbrio entre os quatro elementos: terra, fogo, ar e água. Ela precisa dominar suas habilidades e enfrentar uma antiga profecia para salvar o mundo da destruição iminente.", 34.90),
-("O Portal dos Sonhos", "Fantasia", 300, "Uma jovem descobre um portal mágico que a transporta para um mundo de sonhos e imaginação. Lá, ela encontra criaturas fantásticas, desvenda enigmas antigos e aprende lições valiosas sobre coragem, amizade e autodescoberta.", 29.90),
+("Legado entre Reinos", "Fantasia", 400, "Em um mundo onde a magia foi esquecida, um jovem descobre que é o herdeiro de um antigo reino encantado. Ele deve embarcar em uma jornada perigosa para restaurar a magia e derrotar as forças das trevas que ameaçam dominar o mundo.", 44.90),
+("Filha dos Elementos", "Fantasia", 350, "Uma garota com poderes misteriosos é a única esperança para restaurar o equilíbrio entre os quatro elementos: terra, fogo, ar e água. Ela precisa dominar suas habilidades e enfrentar uma antiga profecia para salvar o mundo da destruição iminente.", 34.90),
+("Portal dos Sonhos", "Fantasia", 300, "Uma jovem descobre um portal mágico que a transporta para um mundo de sonhos e imaginação. Lá, ela encontra criaturas fantásticas, desvenda enigmas antigos e aprende lições valiosas sobre coragem, amizade e autodescoberta.", 29.90),
 ("A Espada do Destino", "Fantasia", 380, " Uma antiga profecia anuncia a chegada de um herói destinado a empunhar a lendária Espada do Destino e derrotar o mal que assola o reino. Acompanhe a jornada desse jovem guerreiro enquanto ele enfrenta criaturas místicas, supera desafios e descobre seu verdadeiro propósito.", 37.90),
 ("O Reino Esquecido", "Fantasia", 320, "Em um reino esquecido pelos livros de história, um grupo de aventureiros se reúne para desvendar os segredos de um passado perdido. Eles enfrentam perigosas criaturas mágicas, exploram ruínas antigas e desenterram uma conspiração que poderia abalar os alicerces do mundo conhecido.", 31.90),
 
@@ -36,7 +37,6 @@ for livs in livros:
     l1 = livro.Livro(livs)
 
     ref_Livro.append(l1)
-
 
 romance = []
 ficcao = []
@@ -84,7 +84,50 @@ class Biblioteca:
         self.ref_estantes = ref_estante
 
     def opcoesGenero(self):
-        for c in range(0, len(generos)):
-            print(f'{c+1}. {generos[c]}')
+        
+        c = 1
+        for k in generos.keys():
+            print(f'{c}. {k}')
+            c += 1
+
+        opt = int(input("Digite o gênero que deseja: "))
+
+        if opt == 1:
+            self.opcoesLivro(generos["Romance"])
+        elif opt == 2:
+            self.opcoesLivro(generos["Ficção Científica"])
+        elif opt == 3:
+            self.opcoesLivro(generos["Fantasia"])
+        elif opt == 4:
+            self.opcoesLivro(generos["Mistério"])
+        elif opt == 5:
+            self.opcoesLivro(generos["Comédia"])
+        else:
+            print("Opção Inválida")
+
             
-        opcao = str(input("Selecione a opção do gênero que deseja:"))
+    def opcoesLivro(self, genero):
+        
+        system('cls')
+
+        for livro in genero:
+            print(f'- {livro.titulo}')
+
+
+    def exibirAlfabetica(self):
+        self.livros = sorted(self.livros, key=lambda livros: livros.titulo)
+
+        for livro in self.livros:
+            print(livro.titulo)
+
+    def exibirNum(self):
+        self.livros = sorted(self.livros, key=lambda livros: livros.pgs)
+
+        for livro in self.livros:
+            print(f'{livro.pgs}')
+
+    def exibirPreco(self):
+        self.livros = sorted(self.livros, key=lambda livros: livros.valor)
+        
+        for livro in self.livros:
+            print(f'{livro.valor}')

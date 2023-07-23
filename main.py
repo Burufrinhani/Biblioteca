@@ -17,11 +17,7 @@ def definirSaudacao():
 
     return saud
 
-estante1 = estante.Estante("Qualquer coisa", 5, "Suspense", 1)
-
-print(estante1)
-
-print(f'{definirSaudacao()} Insira a opção que deseja. \n')
+print(f'{definirSaudacao()}\nInsira a opção que deseja. \n')
 
 while True:
     print('1. Entrada e saída de livros \n2. Busca de livros \n3. Opções de gêneros \n4. Localização dos títulos \n5. Sair')
@@ -33,10 +29,30 @@ while True:
     if opcao == 1:
         print('Entrada e saída de livros. \n')
         break
+    
 
     elif opcao == 2:
-        print('Busca de livros.')
-        break
+        
+        while True:
+            
+            print('Busca de livros.\n')
+            opOrdem = int(input('1. Alfabética.\n2. Número de páginas.\n3. Preço\n\nEscolha a ordem de exibição: '))
+
+            if opOrdem == 1:
+                bibli.exibirAlfabetica()
+                break
+
+            elif opOrdem == 2:
+                bibli.exibirNum()
+                break
+
+            elif opOrdem == 3:  
+                bibli.exibirPreco()
+                break
+
+            else:
+                system('cls')
+                print('Opção inválida.')
 
     elif opcao == 3:
         print('Opções de gêneros.')

@@ -1,5 +1,3 @@
-import estante
-
 class Livro:
     def __init__ (self, informacoes):
         self.titulo = informacoes[0]
