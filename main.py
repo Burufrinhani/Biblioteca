@@ -28,7 +28,7 @@ while True:
 
     if opcao == 1:
         print('Entrada e saída de livros. \n')
-        break
+        
     
 
     elif opcao == 2:
@@ -40,15 +40,15 @@ while True:
 
             if opOrdem == 1:
                 bibli.exibirAlfabetica()
-                break
+                
 
             elif opOrdem == 2:
                 bibli.exibirNum()
-                break
+                
 
             elif opOrdem == 3:  
                 bibli.exibirPreco()
-                break
+                
 
             else:
                 system('cls')
@@ -59,18 +59,20 @@ while True:
 
         bibli.opcoesGenero()
 
-        break
+        
 
     elif opcao == 4:
         print('Localização dos títulos')
 
-        break
+        
 
     elif opcao == 5:
-        break    
+        break
 
     else:
         print('Opçao inválida, digite novamente.')
 
 
 print("Programa finalizado.")
+
+

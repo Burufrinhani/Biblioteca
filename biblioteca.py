@@ -62,20 +62,36 @@ for livro in ref_Livro:
         comedia.append(livro)
 
 
-ref_estante = []
-estante1 = estante.Estante(romance, 30, 'Romance', 1)
-estante2 = estante.Estante(ficcao, 30, 'Ficção Científica', 2)
-estante3 = estante.Estante(fantasia, 30, 'Fantasia', 3)
-estante4 = estante.Estante(misterio, 30, 'Mistério', 4)
-estante5 = estante.Estante(comedia, 30, 'Comédia', 5)
+# ref_Livro = []
 
-ref_estante.append(estante1)
-ref_estante.append(estante2)
-ref_estante.append(estante3)
-ref_estante.append(estante4)
-ref_estante.append(estante5)
+# for livs in livros:
+#     l1 = livro.Livro(livs)
+
+#     ref_Livro.append(l1)
 
 generos = {'Romance': romance, 'Ficção Científica': ficcao, 'Fantasia': fantasia, 'Mistério': misterio, 'Comédia': comedia}
+
+ref_estante = []
+
+c = 1
+for k, v in generos.items():
+    e1 = estante.Estante(v, 30, k, c)
+    c += 1
+
+    ref_estante.append(e1)
+
+# estante1 = estante.Estante(romance, 30, 'Romance', 1)
+# estante2 = estante.Estante(ficcao, 30, 'Ficção Científica', 2)
+# estante3 = estante.Estante(fantasia, 30, 'Fantasia', 3)
+# estante4 = estante.Estante(misterio, 30, 'Mistério', 4)
+# estante5 = estante.Estante(comedia, 30, 'Comédia', 5)
+
+# ref_estante.append(estante1)
+# ref_estante.append(estante2)
+# ref_estante.append(estante3)
+# ref_estante.append(estante4)
+# ref_estante.append(estante5)
+
 
 class Biblioteca:
     def __init__(self):
@@ -112,6 +128,13 @@ class Biblioteca:
 
         for livro in genero:
             print(f'- {livro.titulo}')
+
+        while True:
+            txt = str(input('\nDigite \"sair\" para retornar ao menu principal: '))
+
+            if txt.lower().strip() == "sair":
+                system('cls')
+                break
 
 
     def exibirAlfabetica(self):
