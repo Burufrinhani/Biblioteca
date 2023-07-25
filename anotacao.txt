@@ -50,3 +50,8 @@ biblioteca
 # tupla       - ()
 # lista       - []
 # dicionario  - {}
+
+
+cadastrarCliente()
+removerCliente()
+registrarLivro()

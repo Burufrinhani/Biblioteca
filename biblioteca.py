@@ -31,43 +31,38 @@ livros = [("Amor Proibido", "Romance", 350, "Em um mundo dividido por ódio e pr
 ("Amores e Desventuras", "Comédia", 400, "Uma história repleta de encontros e desencontros amorosos, com personagens excêntricos e situações divertidas. O protagonista se envolve em uma série de relacionamentos malucos, causando situações hilárias e imprevistos cômicos ao longo do caminho.", 44.90),
 ("Rir é o Melhor Remédio", "Comédia", 300, "Um livro repleto de piadas, trocadilhos e histórias engraçadas para alegrar o dia a dia do leitor. Com uma seleção diversificada de humor, desde piadas clássicas até anedotas contemporâneas, o livro oferece momentos de riso e descontração em cada página.", 29.90)]
 
-ref_Livro = []
-
-for livs in livros:
-    l1 = livro.Livro(livs)
-
-    ref_Livro.append(l1)
-
 romance = []
 ficcao = []
 fantasia = []
 misterio = []
 comedia = []
 
-for livro in ref_Livro:
+ref_Livro = []
 
-    if livro.genero == "Romance":
-        romance.append(livro)
-    
-    elif livro.genero == "Ficção Científica":
-        ficcao.append(livro)
+def crialLivros():
+    for livs in livros:
+        l1 = livro.Livro(livs)
 
-    elif livro.genero == "Fantasia":
-        fantasia.append(livro)
-
-    elif livro.genero == "Mistério":
-        misterio.append(livro)
-
-    elif livro.genero == "Comédia":
-        comedia.append(livro)
+        ref_Livro.append(l1)
 
 
-# ref_Livro = []
+    for livro in ref_Livro:
 
-# for livs in livros:
-#     l1 = livro.Livro(livs)
+        if livro.genero == "Romance":
+            romance.append(livro)
+        
+        elif livro.genero == "Ficção Científica":
+            ficcao.append(livro)
 
-#     ref_Livro.append(l1)
+        elif livro.genero == "Fantasia":
+            fantasia.append(livro)
+
+        elif livro.genero == "Mistério":
+            misterio.append(livro)
+
+        elif livro.genero == "Comédia":
+            comedia.append(livro)
+
 
 generos = {'Romance': romance, 'Ficção Científica': ficcao, 'Fantasia': fantasia, 'Mistério': misterio, 'Comédia': comedia}
 
@@ -79,19 +74,7 @@ for k, v in generos.items():
     c += 1
 
     ref_estante.append(e1)
-
-# estante1 = estante.Estante(romance, 30, 'Romance', 1)
-# estante2 = estante.Estante(ficcao, 30, 'Ficção Científica', 2)
-# estante3 = estante.Estante(fantasia, 30, 'Fantasia', 3)
-# estante4 = estante.Estante(misterio, 30, 'Mistério', 4)
-# estante5 = estante.Estante(comedia, 30, 'Comédia', 5)
-
-# ref_estante.append(estante1)
-# ref_estante.append(estante2)
-# ref_estante.append(estante3)
-# ref_estante.append(estante4)
-# ref_estante.append(estante5)
-
+    
 
 class Biblioteca:
     def __init__(self):
@@ -129,28 +112,68 @@ class Biblioteca:
         for livro in genero:
             print(f'- {livro.titulo}')
 
-        while True:
-            txt = str(input('\nDigite \"sair\" para retornar ao menu principal: '))
-
-            if txt.lower().strip() == "sair":
-                system('cls')
-                break
+        self.sair()
 
 
     def exibirAlfabetica(self):
         self.livros = sorted(self.livros, key=lambda livros: livros.titulo)
 
+        c = 1
         for livro in self.livros:
-            print(livro.titulo)
+            print(f'{c}. {livro.titulo}')
+            c += 1
 
+            
     def exibirNum(self):
         self.livros = sorted(self.livros, key=lambda livros: livros.pgs)
 
         for livro in self.livros:
             print(f'{livro.pgs}')
 
+        self.sair()
+
+
     def exibirPreco(self):
         self.livros = sorted(self.livros, key=lambda livros: livros.valor)
         
         for livro in self.livros:
             print(f'{livro.valor}')
+
+        self.sair()
+
+
+    def escolherLivro(self, livroEscolhido):
+        liv = self.livros[livroEscolhido - 1]
+
+        for estante in self.ref_estantes:
+            for livro in estante.livros:
+                if livro.titulo == liv.titulo:
+                    gen = estante.gen
+                    est = estante.num
+
+        print(f'O livro {liv.titulo} está na estante {est}, com gênero {gen}.')
+
+        self.sair()
+
+
+    def adicionarLivro (self):
+        titulo = str(input("Informe o título do livro: "))
+        genero = str(input("Informe o gênero do livro: "))
+        paginas = int(input("Informe a quantidade de páginas do livro: "))
+        sinopse = str(input("Informe a sinopse do livro: "))
+        preco = float(input("Informe o preço do livro: "))
+
+        info = (titulo, genero, paginas, sinopse, preco)
+
+        livros.append(info)
+
+        crialLivros()
+
+
+    def sair(self):
+        while True:
+            txt = str(input('\nDigite \"sair\" para retornar ao menu principal: '))
+
+            if txt.lower().strip() == "sair":
+                system('cls')
+                break
