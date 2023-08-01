@@ -17,3 +17,19 @@ caneta2 = Caneta('bic', 'azul', 1.50)
 
 print(caneta1)
 print(caneta2)
+
+
+# Lista/Tupla --> elemento por índice
+#     nomeLista[indice]
+
+
+# Dicionário --> elemento pela chave
+#     nomeDicionatio['chava']
+
+
+# Objeto --> Atributo
+#     nomeObjeto.Atributo
+
+
+# Objeto --> Método
+#     nomeObjeto.Método()

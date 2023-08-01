@@ -1,9 +1,9 @@
 from os import system
 import datetime
-import estante, livro, cliente, biblioteca
+import biblioteca as bibli_arq
 
 system('cls')
-bibli = biblioteca.Biblioteca()
+biblioteca = bibli_arq.Biblioteca()
 
 def definirSaudacao():
     hora = int((datetime.datetime.now()).strftime("%H"))
@@ -29,7 +29,18 @@ while True:
 
     if opcao == 1:
         print('Entrada e saída de livros. \n')
-        
+
+        while True:
+            print('1.Inserir livro: \n2.Remover livro: ')
+            entradaSaida = int(input())
+
+            if entradaSaida == 1:
+                biblioteca.adicionarLivro()
+
+                break
+
+            elif entradaSaida == 2:
+                biblioteca.removerLivro()
     
     elif opcao == 2:
         
@@ -38,13 +49,13 @@ while True:
             opOrdem = int(input('1. Alfabética.\n2. Número de páginas.\n3. Preço\n\nEscolha a ordem de exibição: '))
 
             if opOrdem == 1:
-                bibli.exibirAlfabetica()
+                biblioteca.exibirAlfabetica()
                 
             elif opOrdem == 2:
-                bibli.exibirNum()
+                biblioteca.exibirNum()
                 
             elif opOrdem == 3:  
-                bibli.exibirPreco()
+                biblioteca.exibirPreco()
                 
             else:
                 system('cls')
@@ -54,16 +65,16 @@ while True:
     elif opcao == 3:
         print('Opções de gêneros.')
 
-        bibli.opcoesGenero()
+        biblioteca.opcoesGenero()
 
 
     elif opcao == 4:
         print('Localização dos títulos')
 
-        bibli.exibirAlfabetica()
+        biblioteca.exibirAlfabetica()
         livroEscolhido = int(input('Escolha o livro de que deseja, atráves de seu número: '))
 
-        bibli.escolherLivro(livroEscolhido)
+        biblioteca.escolherLivro(livroEscolhido)
         
 
     elif opcao == 5:

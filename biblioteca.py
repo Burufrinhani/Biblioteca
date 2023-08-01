@@ -1,4 +1,5 @@
-import livro, estante
+import livro as liv_arq
+import estante as est_arq
 from os import system
 
 livros = [("Amor Proibido", "Romance", 350, "Em um mundo dividido por ódio e preconceito, dois jovens de famílias rivais se apaixonam intensamente, desafiando todas as expectativas e enfrentando grandes obstáculos para ficarem juntos.", 34.90), 
@@ -39,29 +40,28 @@ comedia = []
 
 ref_Livro = []
 
-def crialLivros():
-    for livs in livros:
-        l1 = livro.Livro(livs)
+for livs in livros:
+    l1 = liv_arq.Livro(livs)
 
-        ref_Livro.append(l1)
+    ref_Livro.append(l1)
 
 
-    for livro in ref_Livro:
+for livro in ref_Livro:
 
-        if livro.genero == "Romance":
-            romance.append(livro)
-        
-        elif livro.genero == "Ficção Científica":
-            ficcao.append(livro)
+    if livro.genero == "Romance":
+        romance.append(livro)
+    
+    elif livro.genero == "Ficção Científica":
+        ficcao.append(livro)
 
-        elif livro.genero == "Fantasia":
-            fantasia.append(livro)
+    elif livro.genero == "Fantasia":
+        fantasia.append(livro)
 
-        elif livro.genero == "Mistério":
-            misterio.append(livro)
+    elif livro.genero == "Mistério":
+        misterio.append(livro)
 
-        elif livro.genero == "Comédia":
-            comedia.append(livro)
+    elif livro.genero == "Comédia":
+        comedia.append(livro)
 
 
 generos = {'Romance': romance, 'Ficção Científica': ficcao, 'Fantasia': fantasia, 'Mistério': misterio, 'Comédia': comedia}
@@ -70,17 +70,19 @@ ref_estante = []
 
 c = 1
 for k, v in generos.items():
-    e1 = estante.Estante(v, 30, k, c)
+    e1 = est_arq.Estante(v, 30, k, c)
     c += 1
 
     ref_estante.append(e1)
     
+ref_clientes = []
 
 class Biblioteca:
     def __init__(self):
         self.livros = ref_Livro
         self.generos = generos
-        self.ref_estantes = ref_estante
+        self.estantes = ref_estante
+        self.clientes = ref_clientes
 
     def opcoesGenero(self):
         
@@ -145,7 +147,7 @@ class Biblioteca:
     def escolherLivro(self, livroEscolhido):
         liv = self.livros[livroEscolhido - 1]
 
-        for estante in self.ref_estantes:
+        for estante in self.estantes:
             for livro in estante.livros:
                 if livro.titulo == liv.titulo:
                     gen = estante.gen
@@ -156,7 +158,7 @@ class Biblioteca:
         self.sair()
 
 
-    def adicionarLivro (self):
+    def adicionarLivro(self):
         titulo = str(input("Informe o título do livro: "))
         genero = str(input("Informe o gênero do livro: "))
         paginas = int(input("Informe a quantidade de páginas do livro: "))
@@ -165,9 +167,20 @@ class Biblioteca:
 
         info = (titulo, genero, paginas, sinopse, preco)
 
-        livros.append(info)
+        novo_livro = liv_arq.Livro(info)
 
-        crialLivros()
+        ref_Livro.append(novo_livro)
+
+
+    def removerLivro(self):
+        self.exibirAlfabetica()
+        indice = int(input('Digite o índice do livro que deseja remover: '))
+
+        livroRemovido = self.livros[indice - 1]
+
+        self.livros.pop(indice - 1)
+
+        print(f'O livro \"{livroRemovido.titulo}\" foi removido')
 
 
     def sair(self):
