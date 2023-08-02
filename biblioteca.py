@@ -1,5 +1,6 @@
 import livro as liv_arq
 import estante as est_arq
+import cliente as cli_arq
 from os import system
 
 livros = [("Amor Proibido", "Romance", 350, "Em um mundo dividido por ódio e preconceito, dois jovens de famílias rivais se apaixonam intensamente, desafiando todas as expectativas e enfrentando grandes obstáculos para ficarem juntos.", 34.90), 
@@ -75,14 +76,14 @@ for k, v in generos.items():
 
     ref_estante.append(e1)
     
-ref_clientes = []
+
 
 class Biblioteca:
     def __init__(self):
         self.livros = ref_Livro
         self.generos = generos
         self.estantes = ref_estante
-        self.clientes = ref_clientes
+        self.clientes = []
 
     def opcoesGenero(self):
         
@@ -190,3 +191,30 @@ class Biblioteca:
             if txt.lower().strip() == "sair":
                 system('cls')
                 break
+
+    def cadastrarCliente(self):
+        
+        nome = str(input('Nome do cliente: ')).strip()
+        telefone = str(input('Telefone para contato: ')).strip()
+        endereco = str(input('Endereço: ')).strip()
+
+        novoCliente = cli_arq.Cliente(nome, telefone, endereco)
+        
+        self.clientes.append(novoCliente)
+
+        system('cls')
+
+        print(f'O cliente {novoCliente.nome} foi adicionado ao sistema da biblioteca!')
+
+    def listarCliente(self):
+
+        if len(self.clientes) == 0:
+            print("Nenhum cliente registrado.")
+
+        else:
+            c = 1
+            for cliente in self.clientes:
+                print(f"{c}. {cliente.nome}")
+                c += 1
+
+        self.sair()
