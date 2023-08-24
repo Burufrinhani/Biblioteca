@@ -1,6 +1,5 @@
 import livro as liv_arq
 import estante as est_arq
-import cliente as cli_arq
 from os import system
 
 livros = [("Amor Proibido", "Romance", 350, "Em um mundo dividido por ódio e preconceito, dois jovens de famílias rivais se apaixonam intensamente, desafiando todas as expectativas e enfrentando grandes obstáculos para ficarem juntos.", 34.90), 
@@ -83,7 +82,6 @@ class Biblioteca:
         self.livros = ref_Livro
         self.generos = generos
         self.estantes = ref_estante
-        self.clientes = []
 
     def opcoesGenero(self):
         
@@ -192,29 +190,22 @@ class Biblioteca:
                 system('cls')
                 break
 
-    def cadastrarCliente(self):
-        
-        nome = str(input('Nome do cliente: ')).strip()
-        telefone = str(input('Telefone para contato: ')).strip()
-        endereco = str(input('Endereço: ')).strip()
 
-        novoCliente = cli_arq.Cliente(nome, telefone, endereco)
-        
-        self.clientes.append(novoCliente)
+    def alugarLivros(self):
+        self.exibirAlfabetica()
+
+        livroAlugado = int(input('Digite o índice do livro de deseja alugar: '))
+
+        livro = self.livros[livroAlugado - 1]
+
+        print(f'O livro que deseja alugar é {livro.titulo}?')
+        opcao = int(input((f'Digite 1 para confirmar e 2 para selecionar outro título.\n')))
 
         system('cls')
 
-        print(f'O cliente {novoCliente.nome} foi adicionado ao sistema da biblioteca!')
+        if opcao == 1:
+            print('Livro selecionado.')
+            selecao = int(input('Agora selecione seu cadastro em nossa lista de clientes, ou crie um:'))
 
-    def listarCliente(self):
-
-        if len(self.clientes) == 0:
-            print("Nenhum cliente registrado.")
-
-        else:
-            c = 1
-            for cliente in self.clientes:
-                print(f"{c}. {cliente.nome}")
-                c += 1
-
-        self.sair()
+            print(f'O livro {livroAlugado} foi registrado no seu nome')
+            

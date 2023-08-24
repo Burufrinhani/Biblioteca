@@ -8,3 +8,5 @@ class Livro:
 
     def __str__(self):
         return f'Título: {self.titulo}\nGênero: {self.genero}\nNúmero de páginas: {self.pgs}\nSinopse: {self.sinopse}\nValor: {self.valor}\n'
+    
+

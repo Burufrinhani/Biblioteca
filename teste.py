@@ -24,7 +24,7 @@ print(caneta2)
 
 
 # Dicionário --> elemento pela chave
-#     nomeDicionatio['chava']
+#     nomeDicionatio['chave']
 
 
 # Objeto --> Atributo
@@ -33,3 +33,22 @@ print(caneta2)
 
 # Objeto --> Método
 #     nomeObjeto.Método()
+
+
+
+# -------------> MÉTODO DE ALUGAR LIVROS: <-------------
+# 1º - Mostrar os livros
+
+# 2º - Fazer o cliente selecionar o livro desejado
+
+# 3º - Acessar livro na LISTA de livros (atributo da biblioteca) através da OPÇÃO ESCOLHIDA. 
+#      (acesso a elemento da lista = nomeLista[indice])
+
+# 3.5º - Mostrar a lista de clientes (JA EXISTE) e fazer a pessoa selecionar quem ela é
+
+# 3.75 - Acessar cliente na LISTA de clientes (atributo da biblioteca) atraves da OPÇÃO ESCOLHIDA;
+#      (acesso a elemento da lista = nomeLista[indice])
+
+# 4º - Adicionar o livro acessado no atributo histórico (lista) da classe Cliente
+
+# 5º - Exibir mensagem para informar que o livro foi alugado com sucesso.

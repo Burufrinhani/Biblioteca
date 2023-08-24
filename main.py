@@ -1,9 +1,11 @@
 from os import system
 import datetime
 import biblioteca as bibli_arq
+import cliente as cli_arq
 
 system('cls')
 biblioteca = bibli_arq.Biblioteca()
+
 
 def definirSaudacao():
     hora = int((datetime.datetime.now()).strftime("%H"))
@@ -21,7 +23,7 @@ print(f'{definirSaudacao()}\nInsira a opção que deseja. \n')
 
 
 while True:
-    print('1. Entrada e saída de livros \n2. Busca de livros \n3. Opções de gêneros \n4. Localização dos títulos \n5. Adicionar novo cliente \n6. Listar Clientes \n7. Sair ')
+    print('1. Entrada e saída de livros \n2. Busca de livros \n3. Opções de gêneros \n4. Localização dos títulos \n5. Alugar livro \n6. Sair')
 
     opcao = int(input('Insira a opção que deseja consultar: '))
     
@@ -78,16 +80,11 @@ while True:
         
 
     elif opcao == 5:
-        print('Adicione um novo cliente.')
+        print('Alugar livro')
 
-        biblioteca.cadastrarCliente()
+        biblioteca.alugarLivros()
 
     elif opcao == 6:
-        print('Nossos clientes.')
-        
-        biblioteca.listarCliente()
-
-    elif opcao == 7:
         break
 
     else:
