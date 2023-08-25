@@ -129,7 +129,7 @@ class Biblioteca:
         self.livros = sorted(self.livros, key=lambda livros: livros.pgs)
 
         for livro in self.livros:
-            print(f'{livro.pgs}')
+            print(f'{livro.titulo}: {livro.pgs} páginas')
 
         self.sair()
 
@@ -138,7 +138,7 @@ class Biblioteca:
         self.livros = sorted(self.livros, key=lambda livros: livros.valor)
         
         for livro in self.livros:
-            print(f'{livro.valor}')
+            print(f'{livro.titulo}: R$ {livro.valor}')
 
         self.sair()
 
@@ -170,10 +170,12 @@ class Biblioteca:
 
         ref_Livro.append(novo_livro)
 
+        print(f'O livro "{titulo}" foi adicionado à biblioteca.')
+
 
     def removerLivro(self):
         self.exibirAlfabetica()
-        indice = int(input('Digite o índice do livro que deseja remover: '))
+        indice = int(input('\nDigite o índice do livro que deseja remover: '))
 
         livroRemovido = self.livros[indice - 1]
 
@@ -184,9 +186,9 @@ class Biblioteca:
 
     def sair(self):
         while True:
-            txt = str(input('\nDigite \"sair\" para retornar ao menu principal: '))
+            txt = str(input('\nDigite \"voltar\" para retornar ao menu principal: '))
 
-            if txt.lower().strip() == "sair":
+            if txt.lower().strip() == "voltar":
                 system('cls')
                 break
 
@@ -194,18 +196,32 @@ class Biblioteca:
     def alugarLivros(self):
         self.exibirAlfabetica()
 
-        livroAlugado = int(input('Digite o índice do livro de deseja alugar: '))
+        livroAlugado = int(input('\nDigite o índice do livro de deseja alugar: '))
 
         livro = self.livros[livroAlugado - 1]
 
-        print(f'O livro que deseja alugar é {livro.titulo}?')
-        opcao = int(input((f'Digite 1 para confirmar e 2 para selecionar outro título.\n')))
+        system('cls')
+
+        print(f'\nO livro que deseja alugar é "{livro.titulo}"?')
+        opcao = int(input((f'\nDigite 1 para confirmar e 2 para selecionar outro título.\n')))
 
         system('cls')
 
         if opcao == 1:
             print('Livro selecionado.')
-            selecao = int(input('Agora selecione seu cadastro em nossa lista de clientes, ou crie um:'))
+            nome = str(input('Informe seu nome para criar um cadatro na biblioteca: '))
 
-            print(f'O livro {livroAlugado} foi registrado no seu nome')
-            
+            system('cls')
+
+            print(f'{nome}, livro "{livro.titulo}" foi registrado em seu nome!\nContamos que mantenha-o num bom estado e que a devolução seja feita no prazo estipulado.')
+
+        else:
+            self.exibirAlfabetica()
+
+            livroAlugado = int(input('\nDigite o índice do livro de deseja alugar: '))
+
+            livro = self.livros[livroAlugado - 1]
+
+            print(f'O livro que deseja alugar é {livro.titulo}?')
+            opcao = input((f'Digite 1 para confirmar e 2 para selecionar outro título.\n'))
+                

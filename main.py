@@ -1,7 +1,6 @@
 from os import system
 import datetime
 import biblioteca as bibli_arq
-import cliente as cli_arq
 
 system('cls')
 biblioteca = bibli_arq.Biblioteca()
@@ -52,12 +51,15 @@ while True:
 
             if opOrdem == 1:
                 biblioteca.exibirAlfabetica()
+
                 
             elif opOrdem == 2:
                 biblioteca.exibirNum()
+
                 
             elif opOrdem == 3:  
                 biblioteca.exibirPreco()
+                
                 
             else:
                 system('cls')
@@ -74,7 +76,9 @@ while True:
         print('Localização dos títulos')
 
         biblioteca.exibirAlfabetica()
-        livroEscolhido = int(input('Escolha o livro de que deseja, atráves de seu número: '))
+        livroEscolhido = int(input('\nEscolha o livro de que deseja, atráves de seu número: '))
+
+        system('cls')
 
         biblioteca.escolherLivro(livroEscolhido)
         
@@ -83,6 +87,8 @@ while True:
         print('Alugar livro')
 
         biblioteca.alugarLivros()
+
+        break
 
     elif opcao == 6:
         break
