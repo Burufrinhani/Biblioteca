@@ -47,7 +47,6 @@ for livs in livros:
 
 
 for livro in ref_Livro:
-
     if livro.genero == "Romance":
         romance.append(livro)
     
@@ -74,8 +73,6 @@ for k, v in generos.items():
     c += 1
 
     ref_estante.append(e1)
-    
-
 
 class Biblioteca:
     def __init__(self):
@@ -84,12 +81,11 @@ class Biblioteca:
         self.estantes = ref_estante
 
     def opcoesGenero(self):
-        
         c = 1
         for k in generos.keys():
             print(f'{c}. {k}')
             c += 1
-
+        print('0. Sair')
         opt = int(input("Digite o gênero que deseja: "))
 
         if opt == 1:
@@ -102,21 +98,18 @@ class Biblioteca:
             self.opcoesLivro(generos["Mistério"])
         elif opt == 5:
             self.opcoesLivro(generos["Comédia"])
+        elif opt == 0:
+            self.sair()
         else:
             print("Opção Inválida")
-
             
     def opcoesLivro(self, genero):
-        
         system('cls')
 
         for livro in genero:
             print(f'- {livro.titulo}')
 
-        self.sair()
-
-
-    def exibirAlfabetica(self):
+    def exibirAlfabetica(self, saida=True):
         self.livros = sorted(self.livros, key=lambda livros: livros.titulo)
 
         c = 1
@@ -124,6 +117,8 @@ class Biblioteca:
             print(f'{c}. {livro.titulo}')
             c += 1
 
+        if saida:
+            self.sair()
             
     def exibirNum(self):
         self.livros = sorted(self.livros, key=lambda livros: livros.pgs)
@@ -133,7 +128,6 @@ class Biblioteca:
 
         self.sair()
 
-
     def exibirPreco(self):
         self.livros = sorted(self.livros, key=lambda livros: livros.valor)
         
@@ -142,8 +136,13 @@ class Biblioteca:
 
         self.sair()
 
+    def escolherLivro(self):
+        self.exibirAlfabetica()
 
-    def escolherLivro(self, livroEscolhido):
+        livroEscolhido = int(input('\nEscolha o livro de que deseja, atráves de seu número: '))
+
+        system('cls')
+
         liv = self.livros[livroEscolhido - 1]
 
         for estante in self.estantes:
@@ -155,7 +154,6 @@ class Biblioteca:
         print(f'O livro {liv.titulo} está na estante {est}, com gênero {gen}.')
 
         self.sair()
-
 
     def adicionarLivro(self):
         titulo = str(input("Informe o título do livro: "))
@@ -172,9 +170,8 @@ class Biblioteca:
 
         print(f'O livro "{titulo}" foi adicionado à biblioteca.')
 
-
     def removerLivro(self):
-        self.exibirAlfabetica()
+        self.exibirAlfabetica(False)
         indice = int(input('\nDigite o índice do livro que deseja remover: '))
 
         livroRemovido = self.livros[indice - 1]
@@ -183,7 +180,6 @@ class Biblioteca:
 
         print(f'O livro \"{livroRemovido.titulo}\" foi removido')
 
-
     def sair(self):
         while True:
             txt = str(input('\nDigite \"voltar\" para retornar ao menu principal: '))
@@ -191,7 +187,6 @@ class Biblioteca:
             if txt.lower().strip() == "voltar":
                 system('cls')
                 break
-
 
     def alugarLivros(self):
         self.exibirAlfabetica()
@@ -209,11 +204,13 @@ class Biblioteca:
 
         if opcao == 1:
             print('Livro selecionado.')
-            nome = str(input('Informe seu nome para criar um cadatro na biblioteca: '))
+            nome = str(input('Informe seu nome para criar um cadatro na biblioteca: ')).strip()
 
             system('cls')
 
-            print(f'{nome}, livro "{livro.titulo}" foi registrado em seu nome!\nContamos que mantenha-o num bom estado e que a devolução seja feita no prazo estipulado.')
+            print(f'{nome}, o livro "{livro.titulo}" foi registrado em seu nome!\nContamos que mantenha-o num bom estado e que a devolução seja feita no prazo estipulado.')
+
+            self.sair()
 
         else:
             self.exibirAlfabetica()
